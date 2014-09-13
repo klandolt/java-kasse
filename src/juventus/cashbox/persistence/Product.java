@@ -5,15 +5,13 @@ import java.math.BigDecimal;
 
 public class Product {
 	private String strName = "";
-	//private double doubPrice = 0.0;
-	private BigDecimal bigdecPrice;
+	private BigDecimal bigdecPrice = BigDecimal.ZERO.setScale(2);
 	
 	
 	public Product(String param_Name, double param_Price)
 	{
 		this.strName = param_Name;
-		//this.doubPrice = param_Price;
-		this.bigdecPrice = new BigDecimal(param_Price);
+		this.bigdecPrice = BigDecimal.valueOf(param_Price);
 	}
 	
 	public String GetName()

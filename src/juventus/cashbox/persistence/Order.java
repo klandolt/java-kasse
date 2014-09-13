@@ -5,15 +5,14 @@ import java.util.ArrayList;
 
 public class Order {
 	private ArrayList<Product> arrOrder;
-	//private double doubTotal;
 	private BigDecimal bigdecTotal;
 	
 	
 	public Order()
 	{
 		this.arrOrder = new ArrayList<Product>();
-		//this.doubTotal = 0;
-		this.bigdecTotal = new BigDecimal(0.0);
+		
+		this.bigdecTotal = BigDecimal.ZERO;
 		
 	}
 	
@@ -34,17 +33,14 @@ public class Order {
 	
 	public String GetTotal()
 	{
-		//this.doubTotal = 0;
-		this.bigdecTotal.setScale(0);
+		this.bigdecTotal = BigDecimal.ZERO;
 		
 		for(int i=0; this.arrOrder.size()>i ; i++)
 		{
-			//this.doubTotal += arrOrder.get(i).GetPrice();
-			this.bigdecTotal.add(arrOrder.get(i).GetPrice());
+			this.bigdecTotal = BigDecimal.valueOf(this.bigdecTotal.doubleValue() + arrOrder.get(i).GetPrice().doubleValue());
 		}
 		
-		
-		return	String.format("%.2f", this.bigdecTotal);
+		return this.bigdecTotal.setScale(2).toString();
 	}
 	
 	public int GetProductCount(String param_Name)
