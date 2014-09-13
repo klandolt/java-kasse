@@ -21,7 +21,6 @@ public class Product {
 	
 	public BigDecimal GetPrice()
 	{
-		//return this.doubPrice;
 		return this.bigdecPrice;
 	}
 	

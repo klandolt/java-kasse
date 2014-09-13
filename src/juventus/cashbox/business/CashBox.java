@@ -43,9 +43,9 @@ public class CashBox {
 		this.bigdecCashBoxMoney = BigDecimal.valueOf(bigdecCashBoxMoney.doubleValue() + param_Money);
 	}
 	
-	public double GetCashBoxMoney()
+	public BigDecimal GetCashBoxMoney()
 	{
 		
-		return this.bigdecCashBoxMoney.setScale(2).doubleValue();
+		return this.bigdecCashBoxMoney;
 	}
 }

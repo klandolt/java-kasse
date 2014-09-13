@@ -37,7 +37,7 @@ public class Order {
 		
 		for(int i=0; this.arrOrder.size()>i ; i++)
 		{
-			this.bigdecTotal = BigDecimal.valueOf(this.bigdecTotal.doubleValue() + arrOrder.get(i).GetPrice().doubleValue());
+			this.bigdecTotal = bigdecTotal.add(arrOrder.get(i).GetPrice());
 		}
 		
 		return this.bigdecTotal.setScale(2).toString();

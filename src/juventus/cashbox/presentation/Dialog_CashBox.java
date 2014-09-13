@@ -63,7 +63,7 @@ public class Dialog_CashBox extends JDialog {
 		cashBox = new CashBox();
 		list_Temp = new ArrayList<String>();
 		
-		setTitle("Kasse: " + cashBox.GetCashBoxMoney());
+		setTitle("Kasse: " + cashBox.GetCashBoxMoney().setScale(2).toString());
 		setBounds(100, 100, 378, 342);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -124,7 +124,7 @@ public class Dialog_CashBox extends JDialog {
 				if(dialogPay.GetState())
 				{
 					cashBox.AddCashBoxMoney(Double.valueOf(order.GetTotal()));
-					setTitle("Kasse: " + cashBox.GetCashBoxMoney());
+					setTitle("Kasse: " + cashBox.GetCashBoxMoney().setScale(2).toString());
 					order.CleanOrder();
 					LoadOrderdProducts();
 				}

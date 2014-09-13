@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import juventus.cashbox.persistence.Order;
 import juventus.cashbox.persistence.ProductManager;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -22,7 +23,7 @@ public class Dialog_Products extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private ProductManager productManager;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	
 
 	/**
@@ -62,8 +63,11 @@ public class Dialog_Products extends JDialog {
 		
 		for(int i=0;  productManager.GetListSize() > i; i++)
 		{
-			comboBox.addItem(productManager.GetProduct(i).GetName() + " - " + String.format("%.2f", productManager.GetProduct(i).GetPrice()));
+			String text = "";
+			text = productManager.GetProduct(i).GetName() + " - " + productManager.GetProduct(i).GetPrice().setScale(2).toString();
+			comboBox.addItem(text);
 		}
+		
 		
 		contentPanel.setLayout(gl_contentPanel);
 		{
