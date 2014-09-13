@@ -22,11 +22,13 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class Dialog_Pay extends JDialog {
 
@@ -92,9 +94,15 @@ public class Dialog_Pay extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+											
 						if(TestDigits() && Double.valueOf(textField_Kunde.getText()) >= Double.valueOf(strTotal))
 						{
-							JOptionPane.showMessageDialog(null, "Total: " + strTotal + "\n" + "Bezahlt: " + textField_Kunde.getText() + "\n" + "Rueckgeld: " + (Double.valueOf(textField_Kunde.getText()) - Double.valueOf(strTotal)));
+							BigDecimal bigdecEinzahlung;
+							bigdecEinzahlung = BigDecimal.valueOf(Double.valueOf(textField_Kunde.getText()));
+							
+							BigDecimal bigdecRueckgeld;
+							bigdecRueckgeld = bigdecEinzahlung.subtract(BigDecimal.valueOf(Double.valueOf(strTotal)));
+							JOptionPane.showMessageDialog(null, "Total: " + strTotal + "\n" + "Bezahlt: " + bigdecEinzahlung.setScale(2).toString() + "\n" + "Rueckgeld: " + bigdecRueckgeld.setScale(2).toString());
 							JOptionPane.showMessageDialog(null, "Vielen Dank und einen guten Tag.");
 							SetState(true);
 							dispose();

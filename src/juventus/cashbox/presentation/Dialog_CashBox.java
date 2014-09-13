@@ -15,13 +15,16 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.BevelBorder;
 import javax.swing.JTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Vector;
+
 import  sun.audio.*;    //import the sun.audio package
+
 import  java.io.*;
 
 import juventus.cashbox.business.CashBox;
@@ -200,10 +203,10 @@ public class Dialog_CashBox extends JDialog {
 				//JOptionPane.showMessageDialog(null, order.GetOrderedProduct(i).GetName());
 
 				
-				Vector row = new Vector();
+				Vector<Comparable> row = new Vector();
 				row.add(order.GetProductCount(order.GetOrderedProduct(i).GetName()));
 				row.add(order.GetOrderedProduct(i).GetName());
-				row.add(order.GetOrderedProduct(i).GetPrice());
+				row.add(order.GetOrderedProduct(i).GetPrice().setScale(2));
 			    
 				model.addRow(row);
 			}
