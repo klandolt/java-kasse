@@ -85,7 +85,7 @@ public class Dialog_CashBox extends JDialog {
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Integer.class, Object.class, Double.class
+				Integer.class, Object.class, Object.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
@@ -206,8 +206,9 @@ public class Dialog_CashBox extends JDialog {
 				Vector<Comparable> row = new Vector();
 				row.add(order.GetProductCount(order.GetOrderedProduct(i).GetName()));
 				row.add(order.GetOrderedProduct(i).GetName());
-				row.add(order.GetOrderedProduct(i).GetPrice().setScale(2));
+				row.add(String.valueOf(order.GetOrderedProduct(i).GetPrice().setScale(2).toString()));
 			    
+				
 				model.addRow(row);
 			}
 		}
